@@ -13,8 +13,12 @@ let () =
    including [from] but excluding [to_] in increasing order.
 
    {| val range : int -> int -> int list |} *)
-let range from to_ = failwith "For you to implement"
-
+let range from to_ =
+   let rec range_rec from to_ lst = 
+      match from - to_ with
+      | 0 -> lst
+      | _ -> range_rec (from + 1) to_ (lst @ [from])
+   in range_rec from to_ []
 (* You might've noticed that the list type in the function definitions of the
    operator [( @ )] (and also [( :: )]) look a bit different from every other
    type we've used thusfar. This is because a list is a "parameterized data
